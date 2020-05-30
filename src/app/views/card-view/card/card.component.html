@@ -1,0 +1,19 @@
+<mat-card class="card-card">
+
+  <mat-card-header>
+    <mat-card-title>{{person.firstName}} {{person.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{person.occupation}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="person.pictureUrl">
+
+  <mat-card-content style="justify-content: center">
+    <button (click)="openDialog()" class="card-item-icon" color="accent" mat-fab>
+      <mat-icon>details</mat-icon>
+    </button>
+
+    <button (click)="removeSelectedItem(person.personId)" class="card-item-icon" mat-fab color="warn" *ngIf="isAdmin()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-content>
+
+</mat-card>

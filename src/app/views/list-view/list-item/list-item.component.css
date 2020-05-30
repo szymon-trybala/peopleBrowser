@@ -1,0 +1,16 @@
+.list-item-header-image {
+  background-size: cover;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.mat-list-item {
+  box-shadow: 3px 2px 3px lightgray;
+
+}
+
+.list-item-icon {
+  margin-right: 7px;
+  margin-left: 7px;
+}

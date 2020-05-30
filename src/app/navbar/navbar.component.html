@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <span routerLink="/" [style.cursor]="'pointer'">Przeglądarka ludzi</span>
+  <span class="navbar-fill-remaining-space"></span>
+  <button (click)="openDialog()" class="navbar-item-icon" mat-mini-fab color="accent" *ngIf="isAdmin()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-slide-toggle (change)="toggleGrid()" color="accent">Siatka</mat-slide-toggle>
+  <button class="navbar-button" *ngIf="loggedIn()" (click)="logout()" mat-raised-button color="accent">Wyloguj</button>
+</mat-toolbar>

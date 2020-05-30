@@ -1,0 +1,14 @@
+<mat-list-item>
+  <mat-icon class="list-item-header-image" mat-list-avatar style="background-image: url({{person.avatarUrl}})"></mat-icon>
+  <div mat-line>{{person.firstName}} {{person.lastName}}</div>
+  <div mat-line>{{person.occupation}}</div>
+
+
+  <button (click)="openDialog()" class="list-item-icon" color="accent" mat-fab>
+    <mat-icon>details</mat-icon>
+  </button>
+
+  <button *ngIf="isAdmin()" (click)="removeSelectedItem(person.personId)" class="list-item-icon" mat-fab color="warn" >
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-list-item>

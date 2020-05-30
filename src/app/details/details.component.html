@@ -1,0 +1,55 @@
+<mat-slide-toggle *ngIf="isAdmin()" class="details-toggle" (change)="toggleEditMode()" color="accent">Edycja</mat-slide-toggle>
+
+<div *ngIf="!editMode">
+  <h1 mat-dialog-title>{{person.firstName}} {{person.lastName}}</h1>
+  <h3 mat-dialog-title>{{person.occupation}}</h3>
+
+  <div mat-dialog-content>
+    <p>{{person.bio}}</p>
+
+    <img mat-card-image [src]="person.pictureUrl">
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Wyjdź</button>
+  </div>
+</div>
+
+<div *ngIf="editMode">
+  <form class="person-form" (ngSubmit)="submitForm()">
+    <mat-form-field class="details-form-field">
+      <mat-label>Imię</mat-label>
+      <input id="firstName" [(ngModel)]="personEdit.firstName" name="firstName" matInput [placeholder]="person.firstName" value="{{person.firstName}}">
+    </mat-form-field>
+
+    <mat-form-field class="details-form-field">
+      <mat-label>Nazwisko</mat-label>
+      <input id="lastName" [(ngModel)]="personEdit.lastName" name="lastName" matInput [placeholder]="person.lastName" value="{{person.lastName}}">
+    </mat-form-field>
+
+    <mat-form-field class="details-form-field">
+      <mat-label>Zawód</mat-label>
+      <input id="occupation" [(ngModel)]="personEdit.occupation" name="occupation" matInput [placeholder]="person.occupation" value="{{person.occupation}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Zdjęcie profilowe</mat-label>
+      <mat-select id="pictureUrl" name="pictureUrl" [(ngModel)]="selectedPictureUrl" >
+        <mat-option *ngFor="let picture of pictures" value="{{picture.value}}">
+          {{picture.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="details-form-field">
+      <mat-label>Opis</mat-label>
+      <textarea id="bio" [(ngModel)]="personEdit.bio" name="bio" rows="4" matInput [placeholder]="person.bio" value="{{person.bio}}"></textarea>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Wyjdź</button>
+      <button type="submit" mat-button [mat-dialog-close]="personEdit">Ok</button>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,45 @@
+<form class="person-form" (ngSubmit)="submitForm()" #personForm="ngForm">
+  <mat-form-field class="details-form-field">
+    <mat-label>Imię</mat-label>
+    <input required id="firstName" [(ngModel)]="personEdit.firstName" name="firstName" #firstName="ngModel" matInput [placeholder]="person.firstName" value="{{person.firstName}}">
+    <mat-error [hidden]="firstName.valid || firstName.pristine">Imię jest wymagane</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="details-form-field">
+    <mat-label>Nazwisko</mat-label>
+    <input required id="lastName" [(ngModel)]="personEdit.lastName" name="lastName" #lastName="ngModel" matInput [placeholder]="person.lastName"
+           value="{{person.lastName}}">
+    <mat-error [hidden]="lastName.valid || lastName.pristine">Nazwisko jest wymagane</mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field class="details-form-field">
+    <mat-label>Zawód</mat-label>
+    <input required id="occupation" [(ngModel)]="personEdit.occupation" name="occupation" matInput #occupation="ngModel"
+           [placeholder]="person.occupation" value="{{person.occupation}}">
+    <mat-error [hidden]="occupation.valid || occupation.pristine">Zawód jest wymagany</mat-error>     
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Zdjęcie profilowe</mat-label>
+    <mat-select required #pictureUrl="ngModel" id="pictureUrl" name="pictureUrl" [(ngModel)]="selectedPictureUrl">
+      <mat-option *ngFor="let picture of pictures" value="{{picture.value}}">
+        {{picture.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error [hidden]="pictureUrl.valid || pictureUrl.pristine">wybierz kurwa to zdjęcie</mat-error>     
+  </mat-form-field>
+
+  <mat-form-field class="details-form-field">
+    <mat-label>Opis</mat-label>
+    <textarea required id="bio" [(ngModel)]="personEdit.bio" name="bio" rows="4" matInput [placeholder]="person.bio"
+              value="{{person.bio}}" #bio="ngModel"></textarea>
+    <mat-error [hidden]="bio.valid || bio.pristine">Opis jest wymagany</mat-error>     
+
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Wyjdź</button>
+    <button [disabled]="!personForm.form.valid" type="submit" mat-button [mat-dialog-close]="personEdit">Ok</button>
+  </div>
+</form>

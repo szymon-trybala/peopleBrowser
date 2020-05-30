@@ -1,0 +1,80 @@
+<div class="list-settings">
+  <form (ngSubmit)="filterResults()" #filtersForm="ngForm">
+    <mat-form-field>
+      <mat-label>Imię</mat-label>
+      <input
+        id="firstName"
+        [(ngModel)]="filters.firstName"
+        name="firstName"
+        #firstName="ngModel"
+        matInput
+        [placeholder]="filters.firstName"
+        value="{{ filters.firstName }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nazwisko</mat-label>
+      <input
+        id="lastName"
+        [(ngModel)]="filters.lastName"
+        name="lastName"
+        #lastName="ngModel"
+        matInput
+        [placeholder]="filters.lastName"
+        value="{{ filters.lastName }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Zawód</mat-label>
+      <input
+        id="occupation"
+        [(ngModel)]="filters.occupation"
+        name="occupation"
+        #occupation="ngModel"
+        matInput
+        [placeholder]="filters.occupation"
+        value="{{ filters.occupation }}"
+      />
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button color="accent" mat-stroked-button (click)="resetFilters()">
+        Resetuj filtry
+      </button>
+      <button color="accent" type="submit" mat-stroked-button>Ok</button>
+    </div>
+  </form>
+
+  <mat-form-field class="list-select">
+    <mat-label>Sortowanie</mat-label>
+    <mat-select [(value)]="orderBy" (selectionChange)="orderByChanged()">
+      <mat-option>Nie sortuj</mat-option>
+      <mat-option value="firstName">Imię, od A do Z</mat-option>
+      <mat-option value="firstNameDescending">Imię, od Z do A</mat-option>
+      <mat-option value="lastName">Nazwisko, od A do Z</mat-option>
+      <mat-option value="lastNameDescending">Nazwisko, od Z do A</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button class="list-csv-button" color="error" type="submit" (click)="getCsvFile()" mat-stroked-button>Pobierz plik .csv</button>
+
+  <mat-paginator
+    #paginator
+    [length]="paginationSettings.totalItems"
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="pageEvent = getPeople($event, filters, orderBy)"
+  >
+  </mat-paginator>
+</div>
+
+<div>
+  <mat-grid-list cols="4" rowHeight="750px">
+    <mat-grid-tile *ngFor="let person of peopleArray">
+      <app-card (changeList)="peopleListChanged()" [person]="person"></app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

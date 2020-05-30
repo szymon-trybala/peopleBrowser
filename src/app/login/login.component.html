@@ -1,0 +1,23 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Logowanie</mat-card-title>
+      </mat-card-header>
+  
+      <form class="example-form" (ngSubmit)="submitForm()" #authForm="ngForm">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Login" required [(ngModel)]="credentials.login" name="login" #login="ngModel" value="{{credentials.login}}">
+            <mat-error [hidden]="login.valid || login.pristine">Login jest wymagany</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Hasło" required minlength="6" maxlength="64" [(ngModel)]="credentials.password" name="password" type="password" #password="ngModel" value="{{credentials.password}}">
+            <mat-error [hidden]="password.valid || password.pristine">Hasło jest wymagane oraz musi mieć od 6 do 64 znaków</mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <button [disabled]="!authForm.form.valid" mat-stroked-button color="accent" class="btn-block">Zaloguj się</button>
+      </form>
+    </mat-card>
+  </div>

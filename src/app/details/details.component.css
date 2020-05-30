@@ -1,0 +1,16 @@
+.mat-card-image {
+  margin-left: 12%;
+  margin-right: 12%;
+  min-width: 300px;
+  min-height: 400px;
+  max-width: 300px;;
+  max-height: 400px;
+}
+
+.details-form-field {
+  width: 80%;
+}
+
+.details-toggle {
+  margin-bottom: 40px;
+}

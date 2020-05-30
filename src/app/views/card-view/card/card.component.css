@@ -1,0 +1,21 @@
+.card-card {
+  width: 400px;
+  max-height: 700px;
+}
+
+.card-header-image {
+  background-size: cover;
+}
+
+.mat-card-image {
+  margin-left: 12%;
+  margin-right: 12%;
+  min-width: 300px;
+  min-height: 400px;
+  max-width: 300px;;
+  max-height: 400px;
+}
+
+.card-item-icon {
+  margin-right: 5%;
+}

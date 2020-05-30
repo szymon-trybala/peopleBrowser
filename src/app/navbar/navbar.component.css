@@ -1,0 +1,13 @@
+.navbar-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+   Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.navbar-item-icon {
+  margin-right: 1%;
+}
+
+.navbar-button {
+  margin-left: 7%;
+}
